@@ -21,7 +21,7 @@ public class CliApp
     {
         await StartMainMenu();
 
-        Console.WriteLine("Exiting app...");
+        Console.WriteLine("Bye bye little butterflyy...");
     }
 
     // This is responsible for printing out the main menu and handling the user's choice.
@@ -58,10 +58,13 @@ public class CliApp
     {
         // The three double quotes are used to write a multiline string in C#, which keeps the formatting.
         const string menuOptions = """
-                                   Please select:
+                                   HIIIIII BESTIEEEE
+                                   ---------------------------
+                                   Please select one of the opotions:
                                    1) Manage posts
                                    2) Manage users
                                    <) Exit application
+                                   ----------------------------
                                    """;
         Console.WriteLine(menuOptions);
     }
