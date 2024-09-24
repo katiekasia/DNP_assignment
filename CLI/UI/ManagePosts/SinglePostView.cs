@@ -52,9 +52,12 @@ internal class SinglePostView
                 continue;
             }
 
-            if ("<".Equals(input))
+            switch(input)
             {
-                return;
+                case "<":
+                    return;
+                case "1":
+                   
             }
 
             Console.WriteLine("Not supported");
