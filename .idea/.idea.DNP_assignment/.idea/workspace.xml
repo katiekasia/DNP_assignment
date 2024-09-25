@@ -7,15 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="new changes">
-      <change afterPath="$PROJECT_DIR$/CLI/UI/CliApp.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InMemoryRepository/InMemoryRepository.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DNP_assignment.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DNP_assignment.sln" afterDir="false" />
-    </list>
+    <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +43,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Project.CLI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
@@ -83,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727211952395</updated>
-      <workItem from="1727211953525" duration="3765000" />
+      <workItem from="1727211953525" duration="6685000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -109,7 +109,39 @@
       <option name="project" value="LOCAL" />
       <updated>1727213586137</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="assignment 2">
+      <option name="closed" value="true" />
+      <created>1727215906081</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727215906081</updated>
+    </task>
+    <task id="LOCAL-00005" summary="assignment 2 finished">
+      <option name="closed" value="true" />
+      <created>1727217382422</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727217382422</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changes">
+      <option name="closed" value="true" />
+      <created>1727217406877</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727217406877</updated>
+    </task>
+    <task id="LOCAL-00007" summary="changes">
+      <option name="closed" value="true" />
+      <created>1727218730290</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727218730290</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +155,9 @@
     <MESSAGE value="new" />
     <MESSAGE value="chmages" />
     <MESSAGE value="new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
+    <MESSAGE value="assignment 2" />
+    <MESSAGE value="assignment 2 finished" />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
 </project>

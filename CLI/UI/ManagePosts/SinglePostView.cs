@@ -57,10 +57,13 @@ internal class SinglePostView
                 case "<":
                     return;
                 case "1":
-                   
+                    CreateComment createComment =
+                        new CreateComment(postRepository, commentRepository);
+                    await createComment.ShowAsync(postId);
+                    await ShowAsync();
+                    break;
             }
-
-            Console.WriteLine("Not supported");
+            
         }
     }
 }

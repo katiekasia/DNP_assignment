@@ -20,9 +20,11 @@ public class CreateUserView
 
     private async Task CreateUserAsync()
     {
-        while (true)
-        {
-            Console.WriteLine("You are creating a user.");
+            Console.WriteLine("""
+                              -------------------
+                              USER CREATION
+                              -------------------
+                              """);
             Console.WriteLine("Username of the DREAMEST of cuties:");
             string? name = null;
             while (string.IsNullOrEmpty(name))
@@ -97,7 +99,7 @@ public class CreateUserView
                     Console.WriteLine("Invalid option, please try again.\n\n");
                     break;
             }
-        }
+        
     }
 
     private async Task AddUserAsync(string name, string password)
