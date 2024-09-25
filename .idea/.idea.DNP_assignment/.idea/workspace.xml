@@ -7,7 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="" />
+    <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FileRepositories/FileRepositories.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLI/CLI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CLI/CLI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CLI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNP_assignment.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DNP_assignment.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,42 +28,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "katiekasia"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;katiekasia&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/katiekasia/DNP_assignment.git",
-    "accountId": "5467d2bd-3fe4-40d8-b179-cf8b6e547734"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/katiekasia/DNP_assignment.git&quot;,
+    &quot;accountId&quot;: &quot;5467d2bd-3fe4-40d8-b179-cf8b6e547734&quot;
   }
-}]]></component>
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2mX9FqIJ9jMjOWIXbX9OwCYwEcd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.CLI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.CLI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="CLI" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -84,6 +93,8 @@
       <option name="presentableId" value="Default" />
       <updated>1727211952395</updated>
       <workItem from="1727211953525" duration="6685000" />
+      <workItem from="1727257344712" duration="5004000" />
+      <workItem from="1727266919702" duration="3641000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -141,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727218730290</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="works finally">
+      <option name="closed" value="true" />
+      <created>1727262766344</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727262766344</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +177,7 @@
     <MESSAGE value="assignment 2" />
     <MESSAGE value="assignment 2 finished" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="works finally" />
+    <option name="LAST_COMMIT_MESSAGE" value="works finally" />
   </component>
 </project>
