@@ -8,14 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FileRepositories/FileRepositories.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLI/CLI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CLI/CLI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CLI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DNP_assignment.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DNP_assignment.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,8 @@
       <updated>1727211952395</updated>
       <workItem from="1727211953525" duration="6685000" />
       <workItem from="1727257344712" duration="5004000" />
-      <workItem from="1727266919702" duration="3641000" />
+      <workItem from="1727266919702" duration="4143000" />
+      <workItem from="1727374726566" duration="2667000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -160,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727262766344</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="new fileRepositories">
+      <option name="closed" value="true" />
+      <created>1727271467520</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727271467520</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +183,7 @@
     <MESSAGE value="assignment 2 finished" />
     <MESSAGE value="changes" />
     <MESSAGE value="works finally" />
-    <option name="LAST_COMMIT_MESSAGE" value="works finally" />
+    <MESSAGE value="new fileRepositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fileRepositories" />
   </component>
 </project>

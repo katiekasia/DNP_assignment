@@ -30,21 +30,57 @@ public class UserFileRepository : IUserRepository
 
     public async Task UpdateAsync(User user)
     {
-        throw new NotImplementedException();
+        string usersAsJson = await File.ReadAllTextAsync(filePath);
+        List<User> users = JsonSerializer.Deserialize< List < User >> (usersAsJson);
+        
+        User? existingUser = users.SingleOrDefault(u => u.Id == user.Id);
+        if (existingUser is null)
+        {
+            throw new KeyNotFoundException($"User with ID '{user.Id}' not found");
+        }
+
+        user.Id = existingUser.Id;
+        users.Remove(existingUser);
+        users.Add(user);
+        usersAsJson = JsonSerializer.Serialize(users);
+        await File.WriteAllTextAsync(filePath, usersAsJson);
+        
     }
 
     public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        string usersAsJson = await File.ReadAllTextAsync(filePath);
+        List<User> users = JsonSerializer.Deserialize< List < User >> (usersAsJson);
+        
+        var userToRemove = users.SingleOrDefault(u => u.Id == id);
+        if (userToRemove is null)
+        {
+            throw new KeyNotFoundException($"User with ID '{id}' not found");
+        }
+        users.Remove(userToRemove);
+        usersAsJson = JsonSerializer.Serialize(users);
+        await File.WriteAllTextAsync(filePath, usersAsJson);
+
     }
 
     public async Task<User> GetSingleAsync(int id)
     {
-        throw new NotImplementedException();
+        string usersAsJson = await File.ReadAllTextAsync(filePath);
+        List<User> users = JsonSerializer.Deserialize< List < User >> (usersAsJson);
+        
+        var user = users.SingleOrDefault(u => u.Id == id);
+        if (user is null)
+        {
+            throw new KeyNotFoundException($"User with ID '{id}' not found");
+        }
+        return user;
     }
 
     public IQueryable<User> GetMany()
     {
-        throw new NotImplementedException();
+        string usersAsJson = File.ReadAllTextAsync(filePath).Result;
+        List<User> users = 
+            JsonSerializer.Deserialize<List<User>>(usersAsJson)!;
+        return users.AsQueryable();
     }
 }
