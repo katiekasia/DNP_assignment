@@ -9,9 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/CommentFileRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/PostFileRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileRepositories/UserFileRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +89,8 @@
       <workItem from="1727257344712" duration="5004000" />
       <workItem from="1727266919702" duration="4143000" />
       <workItem from="1727374726566" duration="2667000" />
+      <workItem from="1728496971420" duration="6000" />
+      <workItem from="1729514753485" duration="186000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
