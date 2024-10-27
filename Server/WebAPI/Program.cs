@@ -1,15 +1,41 @@
+using FileRepositories;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using RepositoryContracts;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Add support for controllers
+builder.Services.AddControllers();
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/*
+ Now, a Controller can request any of the 
+ I*Repository interfaces, as needed, and 
+ the Dependency Injection functionality will handle creation for us. 
+ This is very convenient.
+
+Similar to the CLI project, the creation of specific 
+implementations is isolated to a single place, 
+so when we later need to swap out the repository implementations again, it will be very easy. 
+We just modify these three lines of code.
+ */
+
+builder.Services.AddScoped<IPostRepository, PostFileRepository>();
+builder.Services.AddScoped<IUserRepository, UserFileRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentFileRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//Add support for controllers
+app.MapControllers();
+
+//Configure the HTTP request pipeline
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,9 +43,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
