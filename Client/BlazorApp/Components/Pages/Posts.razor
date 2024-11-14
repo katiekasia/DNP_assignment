@@ -1,0 +1,73 @@
+@page "/posts"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IPostService PostService
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Posts</PageTitle>
+
+<h1 class="mb-4 text-primary">Posts</h1>
+
+@if (posts == null)
+{
+    <div class="alert alert-info" role="alert">Loading posts...</div>
+}
+else if (!posts.Any())
+{
+    <div class="alert alert-warning" role="alert">No posts found.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var post in posts)
+        {
+            string correctName = "Unknown User";
+            var user = users.FirstOrDefault(u => u.Id == post.UserId);
+            if (user != null)
+            {
+                correctName = user.Username;
+            }
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@post.Title</h5>
+                        <p class="card-text text-muted">
+                            <small>Posted by: <strong>@correctName</strong></small>
+                        </p>
+                        <p class="card-text">@post.Body?.Substring(0, Math.Min(100, post.Body.Length))...</p>
+                        <button class="btn btn-outline-primary" @onclick="() => GoToPostDetails(post.id)">View Details</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
+@code {
+    private List<PostDto> posts = new List<PostDto>();
+    private List<UserDto> users = new List<UserDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+// Fetch all posts or filtered ones
+            posts = await PostService.GetPostsByTitleAsync() ?? new List<PostDto>();
+            users = await UserService.GetUsersAsync() ?? new List<UserDto>();
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error fetching posts: {ex.Message}");
+            posts = new List<PostDto>(); // Prevents null reference if fetching fails
+        }
+    }
+
+    private void GoToPostDetails(int postId)
+    {
+        NavigationManager.NavigateTo($"/posts/{postId}");
+    }
+
+}

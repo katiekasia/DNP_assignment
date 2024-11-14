@@ -1,0 +1,110 @@
+@page "/posts/{postId:int}"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IPostService PostService
+@inject IUserService UserService
+@inject ICommentService CommentService
+@inject NavigationManager NavigationManager
+
+<h1>@post?.Title</h1>
+
+<p>@post?.Body</p>
+
+@if (comments == null)
+{
+    <p>Loading comments for this post...</p>
+}
+else if (!comments.Any())
+{
+    <p>No comments found for this post.</p>
+}
+else
+{
+    <h2>Comments</h2>
+    <ul>
+        @foreach (var comment in comments)
+        {
+            string username = "Unknown User";
+            var user = users.FirstOrDefault(u => u.Id == comment.UserId);
+            if (user != null)
+            {
+                username = user.Username;
+            }
+
+            <li>
+                <p>@comment.Body</p>
+                <small>Posted by: @username</small>
+            </li>
+        }
+    </ul>
+}
+
+<h3>Add a Comment</h3>
+<div class="mb-3">
+    <textarea class="form-control" @bind="newCommentBody" rows="3" placeholder="Write your comment..."></textarea>
+</div>
+<button class="btn btn-primary" @onclick="AddComment">Submit Comment</button>
+
+@code {
+    [Parameter] public int postId { get; set; }
+
+    private PostDto post;
+    private List<CommentDto> comments = new List<CommentDto>();
+    private List<UserDto> users = new List<UserDto>();
+    private string newCommentBody = string.Empty;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Fetch the post details
+            post = await PostService.GetPostAsync(postId);
+
+            // Fetch the comments for this post
+            comments = await CommentService.GetCommentsByPostId(postId);
+
+            // Fetch all users to display the usernames of commenters
+            users = await UserService.GetUsersAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error fetching post details or comments: {ex.Message}");
+        }
+        
+    }
+    private async Task AddComment()
+    {
+        if (string.IsNullOrWhiteSpace(newCommentBody))
+        {
+            Console.Error.WriteLine("Comment body cannot be empty.");
+            return;
+        }
+
+        var newComment = new CreateCommentDto
+        {
+            Body = newCommentBody,
+            PostId = postId,
+            UserId = users.First().Id // Replace with the actual logged-in user ID
+        };
+
+        try
+        {
+            // Add the comment
+            var addedComment = await CommentService.AddComment(newComment);
+            comments.Add(new CommentDto
+            {
+                Body = addedComment.Body,
+                PostId = addedComment.PostId,
+                UserId = addedComment.UserId
+            });
+
+            // Clear the input field after adding
+            newCommentBody = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error adding comment: {ex.Message}");
+        }
+    }
+    
+}

@@ -29,7 +29,7 @@ public class PostsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<CreateCommentDto>> CreatePost(
+    public async Task<ActionResult<CreatePostDto>> CreatePost(
      [FromBody] CreatePostDto request, IPostRepository postRepo)
     {
      Post post = new Post(request.Title, request.Body,
@@ -44,7 +44,7 @@ public class PostsController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public async Task<IResult> ReplacePost([FromRoute] int id, [FromBody] CreatePostDto req, [FromServices] IPostRepository postRepo)
+    public async Task<IResult> ReplacePost([FromRoute] int id, [FromBody] UpdatePostDto req, [FromServices] IPostRepository postRepo)
     {
      Post existingPost = await postRepo.GetSingleAsync(id);
      existingPost.Title = req.Title;
@@ -87,5 +87,6 @@ public class PostsController : ControllerBase
      await postRepo.DeleteAsync(id);
      return Results.NoContent();
     }
+    
 }
     

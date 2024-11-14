@@ -40,8 +40,15 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthentication(); // Add this if authentication is needed
+app.UseAuthorization();
 
+app.MapControllers();
 app.UseHttpsRedirection();
+
 
 app.Run();

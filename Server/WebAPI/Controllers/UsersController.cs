@@ -32,7 +32,7 @@ public class UsersController: ControllerBase
     }
 
     [HttpPut("{id}:int")]
-    public async Task<ActionResult<User>> UpdateUser([FromRoute] int id,[FromBody] CreateUserDto request, [FromServices] IUserRepository userRepo)
+    public async Task<ActionResult<User>> UpdateUser([FromRoute] int id,[FromBody] UpdateUserDto request, [FromServices] IUserRepository userRepo)
     {
         User existing = await userRepo.GetSingleAsync(id);
         
@@ -62,7 +62,7 @@ public class UsersController: ControllerBase
     // The point is that the client can optionally apply this query parameter.
 
     [HttpGet]
-    public ActionResult<IEnumerable<User>> GetUsers(
+    public ActionResult<List<User>> GetUsers(
         [FromQuery] string? userNameContains = null)
     {
         IQueryable<User> users = userRepo.GetMany()
@@ -72,6 +72,8 @@ public class UsersController: ControllerBase
                          .Contains((userNameContains.ToLower())));
         return Ok(users);
     }
+    
+ 
     /*
      * Below endpoints are not strictly necessary. I can retrieve the same data from other endpoints.
      * But I want to illustrate that you can make multiple endpoints for the same data, if you want to.
@@ -84,7 +86,7 @@ public class UsersController: ControllerBase
 
     
     [HttpGet("{userId:int}/posts")]
-    public async Task<ActionResult<IEnumerable<Post>>> GetPostsForUser(
+    public async Task<ActionResult<List<Post>>> GetPostsForUser(
         [FromRoute] int userId,
         [FromServices] IPostRepository postRepo)
 
@@ -96,7 +98,7 @@ public class UsersController: ControllerBase
     }
     // Here is another example, for getting all comments written by a user.
     [HttpGet("{userId:int}/comments")]
-    public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsForUser(
+    public async Task<ActionResult<List<Comment>>> GetCommentsForUser(
         [FromRoute] int userId,
         [FromServices] ICommentRepository commentRepo)
     {

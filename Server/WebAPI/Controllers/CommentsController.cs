@@ -29,7 +29,7 @@ public class CommentsController : ControllerBase
             PostId = created.PostId,
             UserId = created.UserId
         };
-        return Results.Created($"/api/comment/{created.Id}", dto);
+        return Results.Created($"comments/{created.Id}", dto);
     }
 
     [HttpPut("{id}")]
