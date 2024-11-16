@@ -1,0 +1,76 @@
+@page "/AddPost"
+@using System.Security.Claims
+@using ApiContracts
+@using BlazorApp.Services
+@inject IPostService PostService
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthProvider
+
+<h3>Add Post</h3>
+
+<div>
+    <label>Title</label>
+    <input class="form-control" @bind="postTitle" placeholder="Enter post title..."/>
+</div>
+<div class="mt-3">
+    <label>Body</label>
+    <textarea class="form-control" @bind="postBody" rows="4" placeholder="Write your post..."></textarea>
+</div>
+<button class="btn btn-primary mt-3" @onclick="SubmitPost">Submit Post</button>
+<button class="btn btn-secondary mt-3 ms-2" @onclick="Cancel">Cancel</button>
+
+@code {
+    private string postTitle = string.Empty;
+    private string postBody = string.Empty;
+
+    private async Task SubmitPost()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        var userIdClaim = authState.User.FindFirst(ClaimTypes.NameIdentifier);
+
+        if (userIdClaim == null)
+        {
+            Console.Error.WriteLine("User is not authenticated.");
+            return;
+        }
+
+        if (!int.TryParse(userIdClaim.Value, out int userId))
+        {
+            Console.Error.WriteLine("Invalid User ID format.");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(postTitle) || string.IsNullOrWhiteSpace(postBody))
+        {
+            Console.Error.WriteLine("Title and Body cannot be empty.");
+            return;
+        }
+
+        var newPost = new CreatePostDto
+        {
+            Title = postTitle,
+            Body = postBody,
+            UserId = userId
+        };
+
+        try
+        {
+// Create the post using the service
+            await PostService.CreatePostAsync(newPost);
+
+// Navigate to the posts list page after successful submission
+            NavigationManager.NavigateTo("/posts");
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error creating post: {ex.Message}");
+        }
+    }
+
+    private void Cancel()
+    {
+// Navigate back to the posts list page without adding a post
+        NavigationManager.NavigateTo("/posts");
+    }
+
+}

@@ -1,0 +1,126 @@
+@page "/login"
+@using BlazorApp.Auth
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthProvider
+@inject NavigationManager navMgr
+
+<div class="login-container">
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="login-card">
+            <h3>Please login</h3>
+            <div class="input-group">
+                <label>User name:</label>
+                <input type="text" @bind="userName"/>
+            </div>
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" @bind="password"/>
+            </div>
+            @if (!string.IsNullOrEmpty(errorLabel))
+            {
+                <div class="error-label">
+                    @errorLabel
+                </div>
+            }
+            <button @onclick="LoginAsync">Log in</button>
+        </div>
+    </NotAuthorized>
+    <Authorized>
+        <div class="welcome-message">
+            <h3>Welcome, @context.User.Identity.Name!</h3>
+        </div>
+    </Authorized>
+</AuthorizeView>
+</div>
+
+@code {
+    private string userName;
+    private string password;
+    private string errorLabel;
+
+    private async Task LoginAsync()
+    {
+        errorLabel = "";
+        try
+        {
+            await ((SimpleAuthProvider)AuthProvider).LoginAsync(userName, password);
+            navMgr.NavigateTo("/profile");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = $"Error: {e.Message}";
+        }
+    }
+
+}
+
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-card {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .login-button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #005bb5;
+        }
+
+        .error-label {
+            color: red;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>

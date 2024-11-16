@@ -1,7 +1,91 @@
 @page "/profile"
+@using BlazorApp.Auth
+@inject NavigationManager NavManager;
+@inject AuthenticationStateProvider AuthProvider;
 
-<PageTitle>My profile</PageTitle>
+<PageTitle>My Profile</PageTitle>
 
-<h1>profile</h1>
+<h1 class="profile-header">My Profile</h1>
 
-profile
+<AuthorizeView>
+    <Authorized>
+        <div class="profile-container">
+            <h3>User Information:</h3>
+            <div class="user-info">
+                <label>Username: @context.User.Identity.Name</label>
+            </div>
+            <button class="logout-button" @onclick="LoginOutAsync">Log Out</button>
+        </div>
+    </Authorized>
+</AuthorizeView>
+
+@if (!string.IsNullOrEmpty(errorLabel))
+{
+    <div class="error-message">@errorLabel</div>
+}
+
+@code {
+    private string errorLabel;
+
+    private async Task LoginOutAsync()
+    {
+        errorLabel = "";
+        try
+        {
+            await ((SimpleAuthProvider)AuthProvider).Logout();
+            NavManager.NavigateTo("/login");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            errorLabel = $"Error: {e.Message}";
+        }
+    }
+}
+
+<style>
+    .profile-header {
+        font-size: 2rem;
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-info {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+
+    .logout-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .logout-button:hover {
+        background-color: #0056b3;
+    }
+
+    .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>

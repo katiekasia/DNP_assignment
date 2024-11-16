@@ -1,0 +1,58 @@
+@page "/users"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Users</PageTitle>
+
+<h1 class="mb-4 text-primary">Users</h1>
+
+@if (users == null)
+{
+<div class="alert alert-info" role="alert">Loading users...</div>
+}
+else if (!users.Any())
+{
+<div class="alert alert-warning" role="alert">No users found.</div>
+}
+else
+{
+<div class="row">
+    @foreach (var user in users)
+    {
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-primary">@user.Username</h5>
+                <p class="card-text text-muted">
+                    <small>User ID: <strong>@user.Id</strong></small>
+                </p>
+               </div>
+        </div>
+    </div>
+    }
+</div>
+}
+
+@code {
+private List<UserDto> users = new List<UserDto>();
+
+protected override async Task OnInitializedAsync()
+{
+try
+{
+users = await UserService.GetUsersAsync() ?? new List<UserDto>();
+}
+catch (Exception ex)
+{
+Console.Error.WriteLine($"Error fetching users: {ex.Message}");
+users = new List<UserDto>(); // Prevents null reference if fetching fails
+}
+}
+
+private void GoToUserDetails(int userId)
+{
+NavigationManager.NavigateTo($"/users/{userId}");
+}
+}

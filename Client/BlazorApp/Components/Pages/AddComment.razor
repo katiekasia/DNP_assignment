@@ -1,0 +1,71 @@
+@page "/AddComment/{postId:int}"
+@using System.Security.Claims
+@using ApiContracts
+@using BlazorApp.Services
+@inject ICommentService CommentService
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthProvider
+
+
+<h3>Add Comment</h3>
+
+<div>
+    <textarea class="form-control" @bind="commentBody" rows="4" placeholder="Write your comment..."></textarea>
+</div>
+<button class="btn btn-primary mt-3" @onclick="SubmitComment">Submit Comment</button>
+<button class="btn btn-secondary mt-3 ms-2" @onclick="Cancel">Cancel</button>
+
+@code {
+    [Parameter] public int postId { get; set; }
+    private string commentBody = string.Empty;
+
+    private async Task SubmitComment()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        var userIdClaim = authState.User.FindFirst(ClaimTypes.NameIdentifier);
+
+        if (userIdClaim == null)
+        {
+            Console.Error.WriteLine("User is not authenticated.");
+            return;
+        }
+
+        if (!int.TryParse(userIdClaim.Value, out int userId))
+        {
+            Console.Error.WriteLine("Invalid User ID format.");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(commentBody))
+        {
+            Console.Error.WriteLine("Comment body cannot be empty.");
+            return;
+        }
+
+        var newComment = new CreateCommentDto
+        {
+            Body = commentBody,
+            PostId = postId,
+            UserId = userId
+        };
+
+        try
+        {
+            // Add the comment using the service
+            await CommentService.AddComment(newComment);
+
+            // Navigate back to the post page after successful submission
+            NavigationManager.NavigateTo($"/posts/{postId}");
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error adding comment: {ex.Message}");
+        }
+    }
+
+    private void Cancel()
+    {
+        // Navigate back to the post page without adding a comment
+        NavigationManager.NavigateTo($"/posts/{postId}");
+    }
+}

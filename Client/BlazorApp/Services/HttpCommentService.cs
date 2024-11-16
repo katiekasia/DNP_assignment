@@ -33,7 +33,7 @@ public class HttpCommentService : ICommentService
     public async Task<UpdateCommentDto> ReplaceComment(int id, UpdateCommentDto request)
     {
         HttpResponseMessage httpResponse =
-            await client.PutAsJsonAsync($"posts/{id}", request);
+            await client.PutAsJsonAsync($"comments/{id}", request);
         string response =
             await httpResponse.Content.ReadAsStringAsync();
         if (!httpResponse.IsSuccessStatusCode)
@@ -82,7 +82,7 @@ public class HttpCommentService : ICommentService
     public async Task<List<CommentDto>> GetCommentsByPostId(int postId)
     {
         HttpResponseMessage httpResponse =
-            await client.GetAsync($"post/{postId}");
+            await client.GetAsync($"comments/posts/{postId}");
         string response =
             await httpResponse.Content.ReadAsStringAsync();
         if (!httpResponse.IsSuccessStatusCode)
@@ -94,6 +94,6 @@ public class HttpCommentService : ICommentService
             new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
-            });
+            })?? new List<CommentDto>();
     }
 }

@@ -3,11 +3,15 @@
 @using BlazorApp.Services
 @inject IPostService PostService
 @inject IUserService UserService
+
 @inject NavigationManager NavigationManager
 
 <PageTitle>Posts</PageTitle>
 
 <h1 class="mb-4 text-primary">Posts</h1>
+<div class="add-post-section">
+    <button class="btn btn-primary" @onclick="ToAddPost">Add Post</button>
+</div>
 
 @if (posts == null)
 {
@@ -70,4 +74,15 @@ else
         NavigationManager.NavigateTo($"/posts/{postId}");
     }
 
+    private void ToAddPost()
+    {
+        NavigationManager.NavigateTo($"/AddPost");
+    }
+
 }
+<style>
+    .add-post-section{
+    margin-bottom: 2rem;
+    }
+    
+</style>

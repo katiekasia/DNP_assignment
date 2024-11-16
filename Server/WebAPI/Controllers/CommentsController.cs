@@ -53,7 +53,7 @@ public class CommentsController : ControllerBase
         comments= comments.Where(c => c.UserId == id);
         return Results.Ok();
     }
-    [HttpGet("post/{postId}")]
+    [HttpGet("posts/{postId}")]
     public async Task<IResult> GetCommentsByPostId([FromRoute] int postId)
     {
         var comments = commentRepo.GetMany();

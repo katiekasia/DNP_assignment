@@ -14,29 +14,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/BlazorApp.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Login.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/MyProfile.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Posts.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpCommentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpPostService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpUserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/ICommentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/IPostService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/IUserService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ApiContracts/CommentDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ApiContracts/PostDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ApiContracts/UpdateCommentDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ApiContracts/UpdatePostDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/ApiContracts/UserDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/AddComment.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/AddPost.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Register.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Users.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DNP_assignment.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DNP_assignment.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Auth/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Login.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Auth/SimpleAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Auth/SimpleAuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/BlazorApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/BlazorApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/MyProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/MyProfile.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Posts.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Posts.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpCommentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpCommentService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/WebAPI/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Controllers/CommentsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/WebAPI/Controllers/PostsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Controllers/PostsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/WebAPI/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Controllers/UsersController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ApiContracts/UpdateUserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ApiContracts/UpdateUserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/ApiContracts/LoginDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ApiContracts/LoginDto.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,13 +78,13 @@
     &quot;HTTP Request.WebAPI | #1.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/dotnet/dotnet.exe&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kasia/OneDrive/Pulpit/BlazorApp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -248,6 +240,12 @@
       <workItem from="1731487345748" duration="1852000" />
       <workItem from="1731495780444" duration="2303000" />
       <workItem from="1731502282720" duration="289000" />
+      <workItem from="1731602168255" duration="10904000" />
+      <workItem from="1731655249230" duration="1608000" />
+      <workItem from="1731660581966" duration="1547000" />
+      <workItem from="1731662164182" duration="7285000" />
+      <workItem from="1731681965209" duration="212000" />
+      <workItem from="1731761942049" duration="7320000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -345,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730045538837</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Assignment 5 and 6">
+      <option name="closed" value="true" />
+      <created>1731617874275</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1731617874275</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +385,8 @@
     <MESSAGE value="Assignment 4 danny" />
     <MESSAGE value="Assignment 4" />
     <MESSAGE value="Assignment 4 working full" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment 4 working full" />
+    <MESSAGE value="Assignment 5 and 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment 5 and 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -396,6 +403,14 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Login.razor</url>
+          <line>43</line>
+          <properties isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

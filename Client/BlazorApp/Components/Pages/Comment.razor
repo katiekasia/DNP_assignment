@@ -1,110 +1,126 @@
 @page "/posts/{postId:int}"
+@using System.Security.Claims
 @using ApiContracts
+
 @using BlazorApp.Services
 @inject IPostService PostService
 @inject IUserService UserService
 @inject ICommentService CommentService
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthProvider
 
-<h1>@post?.Title</h1>
+<h1 class="post-title">@post?.Title</h1>
 
-<p>@post?.Body</p>
-
+<p class="post-body">@post?.Body</p>
+<div class="add-comment-section">
+    <button class="btn btn-primary" @onclick="ToAddComment">Add Comment</button>
+</div>
 @if (comments == null)
 {
-    <p>Loading comments for this post...</p>
+<p>Loading comments for this post...</p>
 }
 else if (!comments.Any())
 {
-    <p>No comments found for this post.</p>
+<p>No comments found for this post.</p>
 }
 else
 {
-    <h2>Comments</h2>
-    <ul>
-        @foreach (var comment in comments)
-        {
-            string username = "Unknown User";
-            var user = users.FirstOrDefault(u => u.Id == comment.UserId);
-            if (user != null)
-            {
-                username = user.Username;
-            }
+<h2>Comments</h2>
+<div class="comments-container">
+    @foreach (var comment in comments)
+    {
+    string username = "Unknown User";
+    var user = users.FirstOrDefault(u => u.Id == comment.UserId);
+    if (user != null)
+    {
+    username = user.Username;
+    }
 
-            <li>
-                <p>@comment.Body</p>
-                <small>Posted by: @username</small>
-            </li>
-        }
-    </ul>
-}
-
-<h3>Add a Comment</h3>
-<div class="mb-3">
-    <textarea class="form-control" @bind="newCommentBody" rows="3" placeholder="Write your comment..."></textarea>
+    <div class="comment-item">
+        <div class="card comment-body">
+            <div class="card-body">
+                <p class="comment-text">@comment.Body</p>
+                <small class="comment-author">Posted by: @username</small>
+            </div>
+        </div>
+    </div>
+    }
 </div>
-<button class="btn btn-primary" @onclick="AddComment">Submit Comment</button>
+}
 
 @code {
-    [Parameter] public int postId { get; set; }
+[Parameter] public int postId { get; set; }
 
-    private PostDto post;
-    private List<CommentDto> comments = new List<CommentDto>();
-    private List<UserDto> users = new List<UserDto>();
-    private string newCommentBody = string.Empty;
-    
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            // Fetch the post details
-            post = await PostService.GetPostAsync(postId);
+private PostDto post;
+private List<CommentDto> comments = new List<CommentDto>();
+private List<UserDto> users = new List<UserDto>();
+private string newCommentBody = string.Empty;
+private bool isLoading = true;
 
-            // Fetch the comments for this post
-            comments = await CommentService.GetCommentsByPostId(postId);
-
-            // Fetch all users to display the usernames of commenters
-            users = await UserService.GetUsersAsync();
-        }
-        catch (Exception ex)
-        {
-            Console.Error.WriteLine($"Error fetching post details or comments: {ex.Message}");
-        }
-        
-    }
-    private async Task AddComment()
-    {
-        if (string.IsNullOrWhiteSpace(newCommentBody))
-        {
-            Console.Error.WriteLine("Comment body cannot be empty.");
-            return;
-        }
-
-        var newComment = new CreateCommentDto
-        {
-            Body = newCommentBody,
-            PostId = postId,
-            UserId = users.First().Id // Replace with the actual logged-in user ID
-        };
-
-        try
-        {
-            // Add the comment
-            var addedComment = await CommentService.AddComment(newComment);
-            comments.Add(new CommentDto
-            {
-                Body = addedComment.Body,
-                PostId = addedComment.PostId,
-                UserId = addedComment.UserId
-            });
-
-            // Clear the input field after adding
-            newCommentBody = string.Empty;
-        }
-        catch (Exception ex)
-        {
-            Console.Error.WriteLine($"Error adding comment: {ex.Message}");
-        }
-    }
-    
+protected override async Task OnInitializedAsync()
+{
+try
+{
+isLoading = true;
+post = await PostService.GetPostAsync(postId);
+comments = await CommentService.GetCommentsByPostId(postId);
+users = await UserService.GetUsersAsync();
 }
+catch (Exception ex)
+{
+Console.Error.WriteLine($"Error fetching post details or comments: {ex.Message}");
+}
+finally
+{
+isLoading = false;
+}
+}
+private void ToAddComment()
+{
+NavigationManager.NavigateTo($"/AddComment/{postId}");
+}
+}
+
+<style>
+    .post-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .post-body {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .add-comment-section {
+        margin-bottom: 2rem;
+    }
+    .comments-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .comment-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-family: Arial, sans-serif;
+    }
+    .comment-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        background-color: #f3f4f6;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+    .comment-text {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    .comment-author {
+        font-weight: bold;
+        color: #c63e63;
+    }
+</style>

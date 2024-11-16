@@ -1,0 +1,56 @@
+@page "/register"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IUserService UserService
+@inject NavigationManager navMgr
+
+<h3>Create a New Account</h3>
+
+<div>
+    <h3>Register</h3>
+    <label>User name:</label>
+    <input type="text" @bind="newUserName" class="form-control mb-2"/>
+    <label>Password:</label>
+    <input type="password" @bind="newPassword" class="form-control mb-2"/>
+    @if (!string.IsNullOrEmpty(registerErrorLabel))
+    {
+        <label style="color: red"> @registerErrorLabel </label>
+    }
+    <button class="btn btn-primary mt-2" @onclick="RegisterUserAsync">Register</button>
+</div>
+
+@code {
+    private string newUserName;
+    private string newPassword;
+    private string registerErrorLabel;
+
+    private async Task RegisterUserAsync()
+    {
+        registerErrorLabel = "";
+        try
+        {
+            if (string.IsNullOrEmpty(newUserName) || string.IsNullOrEmpty(newPassword))
+            {
+                registerErrorLabel = "Username and Password cannot be empty.";
+                return;
+            }
+
+            var createUserDto = new CreateUserDto
+            {
+                Username = newUserName,
+                Password = newPassword
+            };
+
+            await UserService.AddUserAsync(createUserDto);
+            registerErrorLabel = "User created successfully. You can now log in.";
+
+            // Redirect to the login page after successful registration
+            navMgr.NavigateTo("/login");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            registerErrorLabel = $"Error: {e.Message}";
+        }
+    }
+}
