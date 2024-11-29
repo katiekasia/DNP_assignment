@@ -1,6 +1,7 @@
 using ApiContracts;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 
 namespace WebAPI.Controllers;
@@ -17,14 +18,15 @@ public class CommentsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IResult> AddComment([FromBody] CreateCommentDto request,
+    public async Task<IResult> AddComment([FromBody] CommentDto request,
         [FromServices] ICommentRepository commentRepo)
     {
         Comment comment =
             new Comment(request.Body, request.PostId, request.UserId);
         Comment created = await commentRepo.AddAsync(comment);
-        CreateCommentDto dto = new()
+        CommentDto dto = new()
         {
+            Id = created.Id,
             Body = created.Body,
             PostId = created.PostId,
             UserId = created.UserId
@@ -34,30 +36,60 @@ public class CommentsController : ControllerBase
 
     [HttpPut("{id}")]
     public async Task<IResult> ReplaceComment([FromRoute] int id,
-        [FromBody] CreateCommentDto request,
+        [FromBody] CommentDto request,
         [FromServices] ICommentRepository commentRepo)
     {
         Comment existing = await this.commentRepo.GetSingleAsync(id);
+
         existing.Body = request.Body;
         existing.PostId = request.PostId;
         existing.UserId = request.UserId;
+
         await this.commentRepo.UpdateAsync(existing);
-        return Results.Ok();
+
+        CommentDto dto = new()
+        { 
+            Id = existing.Id,
+            Body = existing.Body,
+            PostId = existing.PostId,
+            UserId = existing.UserId
+        };
+
+        return Results.Ok(dto);
 
     }
 
     [HttpGet("user/{id}")]
     public async Task<IResult> GetCommentsByUserId([FromRoute] int id)
     {
-        var comments = commentRepo.GetMany();
-        comments= comments.Where(c => c.UserId == id);
-        return Results.Ok();
+        var comments = await commentRepo.GetMany()
+            .Where(c => c.UserId == id)
+            .Select(c => new GetCommentDto
+            {
+                Id = c.Id,
+                Body = c.Body,
+                PostId = c.PostId,
+               
+            })
+            .ToListAsync();
+
+        return Results.Ok(comments);
     }
+   
     [HttpGet("posts/{postId}")]
     public async Task<IResult> GetCommentsByPostId([FromRoute] int postId)
     {
-        var comments = commentRepo.GetMany();
-        comments = comments.Where(c => c.PostId == postId);
+        var comments = await commentRepo.GetMany()
+            .Where(c => c.PostId == postId)
+            .Select(c => new CommentDto
+            {
+                Id = c.Id,
+                Body = c.Body,
+                PostId = c.PostId,
+                UserId = c.UserId
+            })
+            .ToListAsync();
+
         return Results.Ok(comments);
     }
 

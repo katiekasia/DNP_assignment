@@ -14,21 +14,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b9bd94-641f-4cbd-85c3-1dc5b611e6a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/AddComment.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/AddPost.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Register.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Users.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/BlazorApp/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/EfcRepositories/AppContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/EfcRepositories/EfcCommentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/EfcRepositories/EfcPostRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/EfcRepositories/EfcUserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DNP_assignment/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Auth/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Login.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Auth/SimpleAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Auth/SimpleAuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/BlazorApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/BlazorApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/MyProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/MyProfile.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comment.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Comments_DeletePost.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Posts.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Components/Pages/Posts.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpCommentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/BlazorApp/Services/HttpCommentService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/WebAPI/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Controllers/CommentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNP_assignment.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DNP_assignment.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Comment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Post.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ApiContracts/LoginDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ApiContracts/LoginDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Server/WebAPI/WebAPI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +57,8 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/CLI/UI/ManagePosts/CreateComment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae5e6ea1f634fbf8260afe1a05f5dab4617d8a33afe3d3ab1f61a791cc0d530/RenderMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -245,7 +249,15 @@
       <workItem from="1731660581966" duration="1547000" />
       <workItem from="1731662164182" duration="7285000" />
       <workItem from="1731681965209" duration="212000" />
-      <workItem from="1731761942049" duration="7320000" />
+      <workItem from="1731761942049" duration="8886000" />
+      <workItem from="1731863200822" duration="5431000" />
+      <workItem from="1731918501882" duration="1712000" />
+      <workItem from="1731956091534" duration="16000" />
+      <workItem from="1732005113915" duration="25000" />
+      <workItem from="1732007958430" duration="2384000" />
+      <workItem from="1732094602441" duration="859000" />
+      <workItem from="1732474036611" duration="540000" />
+      <workItem from="1732867614224" duration="5917000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <option name="closed" value="true" />
@@ -351,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731617874275</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Assignent 5, 6 working fully">
+      <option name="closed" value="true" />
+      <created>1731773810654</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1731773810654</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +406,8 @@
     <MESSAGE value="Assignment 4" />
     <MESSAGE value="Assignment 4 working full" />
     <MESSAGE value="Assignment 5 and 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment 5 and 6" />
+    <MESSAGE value="Assignent 5, 6 working fully" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignent 5, 6 working fully" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

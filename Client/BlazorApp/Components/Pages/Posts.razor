@@ -3,6 +3,7 @@
 @using BlazorApp.Services
 @inject IPostService PostService
 @inject IUserService UserService
+@inject IJSRuntime JSRuntime
 
 @inject NavigationManager NavigationManager
 
@@ -12,6 +13,7 @@
 <div class="add-post-section">
     <button class="btn btn-primary" @onclick="ToAddPost">Add Post</button>
 </div>
+
 
 @if (posts == null)
 {
@@ -71,6 +73,7 @@ else
 
     private void GoToPostDetails(int postId)
     {
+        //this says to which page as PAGE I'm going to
         NavigationManager.NavigateTo($"/posts/{postId}");
     }
 
@@ -78,6 +81,8 @@ else
     {
         NavigationManager.NavigateTo($"/AddPost");
     }
+
+   
 
 }
 <style>

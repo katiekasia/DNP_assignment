@@ -1,6 +1,7 @@
 using ApiContracts;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 
 namespace WebAPI.Controllers;
@@ -62,14 +63,14 @@ public class UsersController: ControllerBase
     // The point is that the client can optionally apply this query parameter.
 
     [HttpGet]
-    public ActionResult<List<User>> GetUsers(
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers(
         [FromQuery] string? userNameContains = null)
     {
-        IQueryable<User> users = userRepo.GetMany()
-            .Where(
-                u => userNameContains == null ||
-                     u.UserName.ToLower()
-                         .Contains((userNameContains.ToLower())));
+        IList<User> users = await userRepo.GetMany()
+            .Where(u => userNameContains == null || u.UserName.ToLower().Contains(userNameContains.ToLower()))
+            .ToListAsync();
+
         return Ok(users);
     }
     
@@ -89,22 +90,24 @@ public class UsersController: ControllerBase
     public async Task<ActionResult<List<Post>>> GetPostsForUser(
         [FromRoute] int userId,
         [FromServices] IPostRepository postRepo)
-
     {
-        List<Post> posts = postRepo.GetMany()
+        List<Post> posts = await postRepo.GetMany()
             .Where(p => p.UserId == userId)
-            .ToList();
+            .ToListAsync();
+
         return Ok(posts);
     }
+    
     // Here is another example, for getting all comments written by a user.
     [HttpGet("{userId:int}/comments")]
     public async Task<ActionResult<List<Comment>>> GetCommentsForUser(
         [FromRoute] int userId,
         [FromServices] ICommentRepository commentRepo)
     {
-        List<Comment> comments = commentRepo.GetMany()
+        List<Comment> comments = await commentRepo.GetMany()
             .Where(c => c.UserId == userId)
-            .ToList();
+            .ToListAsync();
+
         return Ok(comments);
     }
     

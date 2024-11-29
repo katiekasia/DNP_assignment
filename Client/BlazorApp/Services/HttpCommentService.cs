@@ -82,6 +82,7 @@ public class HttpCommentService : ICommentService
     public async Task<List<CommentDto>> GetCommentsByPostId(int postId)
     {
         HttpResponseMessage httpResponse =
+            //this list is the same as the one on API 
             await client.GetAsync($"comments/posts/{postId}");
         string response =
             await httpResponse.Content.ReadAsStringAsync();

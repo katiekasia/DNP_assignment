@@ -1,6 +1,7 @@
-using FileRepositories;
+using EfcRepositories;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using RepositoryContracts;
+using AppContext = EfcRepositories.AppContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +26,17 @@ so when we later need to swap out the repository implementations again, it will 
 We just modify these three lines of code.
  */
 
-builder.Services.AddScoped<IPostRepository, PostFileRepository>();
-builder.Services.AddScoped<IUserRepository, UserFileRepository>();
-builder.Services.AddScoped<ICommentRepository, CommentFileRepository>();
+builder.Services.AddScoped<IPostRepository, EfcPostRepository>();
+builder.Services.AddScoped<IUserRepository, EfcUserRepository>();
+builder.Services.AddScoped<ICommentRepository, EfcCommentRepository>();
+builder.Services.AddDbContext<AppContext>();
 
+//IGNORE CYCLES pleasee ;(((
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
 
 var app = builder.Build();
 
