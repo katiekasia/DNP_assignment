@@ -1,0 +1,85 @@
+﻿@page "/"
+@inject NavigationManager NavMgr 
+<PageTitle>Home</PageTitle>
+
+
+<div class="home-container">
+    <h1 class="home-title">Welcome to the Reddit Clone</h1>
+
+    <AuthorizeView>
+        <Authorized>
+            <p class="auth-status">Hello, @context.User.Identity.Name!</p>
+            <p class="welcome-text">Check out the latest posts and engage with the community.</p>
+        </Authorized>
+        <NotAuthorized>
+            <p class="auth-status">You are not logged in!</p>
+        </NotAuthorized>
+    </AuthorizeView>
+
+    <h3 class="welcome-text">Explore posts from users worldwide.</h3>
+
+    <AuthorizeView>
+        <NotAuthorized>
+            <div class="button-group">
+                <button class="button" @onclick='() => NavMgr.NavigateTo("login")'>Go to Login</button>
+                <button class="button register-button" @onclick='() => NavMgr.NavigateTo("register")'>Register</button>
+            </div>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+<style>
+    .home-container {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .home-title {
+        font-size: 2.5rem;
+        color: #4a90e2;
+        font-weight: bold;
+    }
+
+    .welcome-text {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .auth-status {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        color: #333;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #4a90e2;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #357ab7;
+    }
+
+    .register-button {
+        background-color: #e94e77;
+    }
+
+    .register-button:hover {
+        background-color: #c63e63;
+    }
+</style>
